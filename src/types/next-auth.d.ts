@@ -3,7 +3,7 @@ import { DefaultSession } from 'next-auth';
 declare module 'next-auth' {
   interface User {
     id: string;
-    username: string;
+    username?: string;
   }
 
   interface Session {
