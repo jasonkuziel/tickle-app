@@ -1,6 +1,7 @@
-import { auth, signOut } from '@/lib/auth';
+import { auth } from '@/lib/auth';
 import Link from 'next/link';
 import { UserAvatar } from './UserAvatar';
+import { handleSignOut } from '@/app/actions';
 
 export async function Navbar() {
   const session = await auth();
@@ -37,10 +38,7 @@ export async function Navbar() {
                         View Profile
                       </Link>
                       <form
-                        action={async () => {
-                          'use server';
-                          await signOut();
-                        }}
+                        action={handleSignOut}
                         className="w-full"
                       >
                         <button
