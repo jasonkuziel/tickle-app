@@ -1,5 +1,7 @@
 import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/db';
+
+export const dynamic = 'force-dynamic';
 import { Navbar } from '@/components/Navbar';
 import { FeedCard } from '@/components/FeedCard';
 import { LeaderboardWidget } from '@/components/LeaderboardWidget';
