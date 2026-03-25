@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { UserAvatar } from '@/components/UserAvatar';
 import Link from 'next/link';
@@ -14,7 +14,7 @@ interface SearchResult {
   tickleCount: number;
 }
 
-export default function SearchPage() {
+function SearchResults() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
@@ -154,5 +154,13 @@ export default function SearchPage() {
         </div>
       </main>
     </>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="bg-fb-light-gray min-h-screen flex items-center justify-center">Loading...</div>}>
+      <SearchResults />
+    </Suspense>
   );
 }
